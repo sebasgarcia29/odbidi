@@ -1,15 +1,19 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import { SafeAreaView } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import { AuthProvider } from './src/context/AuthContext';
-import LoginScreen from './src/screens/login/index';
+import { MyStack } from './src/routes/Stack';
 
 function App(): React.JSX.Element {
   return (
+    <NavigationContainer>
     <AuthProvider>
       <SafeAreaView style={{ flex: 1 }}>
-        <LoginScreen />
+        <MyStack />
       </SafeAreaView>
     </AuthProvider>
+    </NavigationContainer>
   );
 }
 

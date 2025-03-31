@@ -43,4 +43,18 @@ export const styles = StyleSheet.create({
     borderBottomColor: '#ddd',
     textAlign: 'center',
   },
+  input: {
+    width: 250,
+    height: 40,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    marginBottom: 10,
+    backgroundColor: '#fff',
+  },
+  errorText: {
+    color: 'red',
+    marginBottom: 10,
+  },
 });
