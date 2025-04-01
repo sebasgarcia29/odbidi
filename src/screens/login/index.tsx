@@ -1,42 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { AuthContext } from '../../context/AuthContext';
-import { PageName } from '../../routes/PageName';
-import { NavigationProps } from '../../routes/Params';
-import { useForm, Controller } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { Controller } from 'react-hook-form';
+import { useLoginForm } from '../../hooks/useForm';
 import { styles } from './styles';
 
-const schema = yup.object().shape({
-  username: yup.string().required('Username is required'),
-  password: yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
-});
-
 const LoginScreen: React.FC = () => {
-  const { navigate } = useNavigation<NavigationProps>();
-  const { dispatch } = useContext(AuthContext);
-
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-    setError,
-  } = useForm({
-    resolver: yupResolver(schema),
-    mode: 'onTouched',
-  });
-
-  const onSubmit = (data: { username: string; password: string }) => {
-    if (data.username !== 'Sebastian') {
-      setError('username', { type: 'manual', message: 'Invalid user' });
-      return;
-    }
-    dispatch({ type: 'LOGIN', payload: data.username });
-    navigate(PageName.Welcome);
-  };
-
+  const { control, handleSubmit, errors, onSubmit } = useLoginForm();
   return (
     <View style={styles.container}>
       <Controller

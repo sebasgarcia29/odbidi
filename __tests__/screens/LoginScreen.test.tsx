@@ -1,15 +1,14 @@
 import React from 'react';
 import { render, fireEvent, act, waitFor } from '@testing-library/react-native';
-import LoginScreen from '../src/screens/Login'; // Adjust this to your actual import path
+import LoginScreen from '../../src/screens/Login';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 
-// Mock the navigation hook
 jest.mock('@react-navigation/native', () => ({
-  ...jest.requireActual('@react-navigation/native'), // This preserves the other functionalities
+  ...jest.requireActual('@react-navigation/native'),
   useNavigation: jest.fn(),
 }));
 
-test('should navigate success in Login✅', async () => {
+test('should navigate success in Login ✅', async () => {
   const mockNavigate = jest.fn();
 
   (useNavigation as jest.Mock).mockReturnValue({ navigate: mockNavigate });

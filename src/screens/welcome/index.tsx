@@ -23,7 +23,7 @@ const WelcomeScreen = () => {
   ), [state.isAuthenticated, state.user]);
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={styles.container}>
       {state.isAuthenticated && (
         welcomeMessage
       )}
